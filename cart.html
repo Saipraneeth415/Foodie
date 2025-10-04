@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie - Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🍛 Foodie</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cart.html" class="active">Cart</a></li>
+        <li><a href="#"><a href="delivery.html"> Delivery</a></a></li>
+        <li><a href="#"><a href="signup.html"> Sign In</a></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Page -->
+  <main class="cart-container">
+    <h1>Your Cart 🛒</h1>
+
+    <div class="cart-items">
+      <!-- Item 1 -->
+      <div class="cart-item">
+        <div class="item-info">
+          <h3>Chicken 65</h3>
+          <p>Crispy, spicy, and straight from heaven!</p>
+        </div>
+        <div class="quantity">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <div class="price">₹299</div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="cart-item">
+        <div class="item-info">
+          <h3>Chicken Biriyani</h3>
+          <p>A royal feast in every flavorful bite.</p>
+        </div>
+        <div class="quantity">
+          <button>-</button>
+          <span>2</span>
+          <button>+</button>
+        </div>
+        <div class="price">₹199</div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="cart-item">
+        <div class="item-info">
+          <h3>Coca Cola</h3>
+          <p>Chilled soft drink</p>
+        </div>
+        <div class="quantity">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <div class="price">₹59</div>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-summary">
+      <h2>Cart Summary</h2>
+      <p>Subtotal: <span>₹756</span></p>
+      <p>Delivery: <span>₹40</span></p>
+      <p class="total">Total: <span>₹796</span></p>
+      <button class="checkout-btn"><a href="delivery.html">Proceed to Checkout</a></button>
+    </div>
+  </main>
+</body>
+</html>

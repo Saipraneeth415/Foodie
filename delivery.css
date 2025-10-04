@@ -1,0 +1,85 @@
+/* Navbar */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #a10000, #c49b3d);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  background: rgba(255, 215, 0, 0.85);
+  color: #a10000;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: -100%;
+    flex-direction: column;
+    background: #a10000;
+    width: 220px;
+    padding: 20px;
+    border-radius: 12px;
+    transition: right 0.4s ease-in-out;
+  }
+
+  .nav-links.active {
+    right: 20px;
+  }
+
+  .nav-links li {
+    margin: 12px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Offset stage below navbar */
+.stage {
+  margin-top: 100px;
+}
+:root{ --bg:#fff8f0; /* soft light background instead of dark */ --accent:#d94e2a; /* warm red-orange (matches Explore Now button, navbar left) */ --gold:#f6c36b; /* golden yellow (matches gradient, highlights) */ --neon:#ffb84d; /* softer neon-like golden-orange for glow */ } body{ min-height:100vh; display:flex;align-items:center;justify-content:center; background: linear-gradient(90deg, #a10000, #c49b3d); font-family:"Segoe UI",sans-serif; overflow:hidden; } /* Stage */ .stage{ width:92vw; max-width:1100px; height:360px; perspective:1400px; position:relative; } /* Road */ .road{ position:absolute; left:0; right:0; bottom:28px; height:160px; transform:translateZ(-120px) scale(1.06); } .horizon{position:absolute;left:0;right:0;top:0;height:60%; background:linear-gradient(180deg,transparent,rgba(255,255,255,0.05));} .stripe{ position:absolute; left:-40%; right:-40%; bottom:20px; height:8px; background:linear-gradient(90deg,rgba(255,255,255,0.08) 0 30%,transparent 30%); animation: roadMove 1.2s linear infinite; } @keyframes roadMove{from{background-position:0 0}to{background-position:300px 0}} /* Delivery animation */ .delivery{ position:absolute; left:-20%; bottom:48px; animation: drive 3s cubic-bezier(.15,.9,.3,1) forwards; transform-style:preserve-3d; } .scooty{width:300px;height:120px;position:relative;transform:translateZ(40px) rotateX(6deg) rotateY(-6deg);} /* Bike Body */ .body{ position:absolute;left:70px;top:18px;width:160px;height:48px; background:linear-gradient(180deg,var(--accent),#b91c1c); border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.5),0 0 20px rgba(255,59,63,0.4); } .seat{position:absolute;left:125px;top:4px;width:70px;height:22px;background:#111;border-radius:6px;} .handle{position:absolute;left:40px;top:6px;width:40px;height:6px;background:#333;border-radius:6px;} /* Wheels */ .wheel{position:absolute;bottom:-6px;width:64px;height:64px;border-radius:50%; background:radial-gradient(circle at center,#111 70%,#444 100%); display:flex;align-items:center;justify-content:center; box-shadow:0 0 20px rgba(0,0,0,0.6);} .wheel.front{right:-8px;animation:spin .4s linear infinite;} .wheel.rear{left:6px;animation:spin .4s linear infinite;} .hub{width:12px;height:12px;background:#ccc;border-radius:50%;} @keyframes spin{to{transform:rotate(1turn)}} /* Rider */ .rider{position:absolute;left:40px;top:-18px;width:90px;height:110px;} .head{width:34px;height:34px;background:#ffddb5;border-radius:50%;position:absolute;left:10px;top:6px;} .helmet{position:absolute;left:4px;top:2px;width:42px;height:22px;background:var(--neon); border-radius:18px 18px 6px 6px;box-shadow:0 0 20px var(--neon);} .torso{position:absolute;left:2px;top:36px;width:80px;height:48px;background:#1e293b;border-radius:10px;} .scarf{position:absolute;left:86px;top:48px;width:60px;height:12px;background:linear-gradient(90deg,var(--gold),transparent); border-radius:6px;animation:flap 1.1s linear infinite;} @keyframes flap{0%{transform:rotate(10deg)}50%{transform:rotate(-12deg)}100%{transform:rotate(10deg)}} /* Food Box */ .foodbox{ position:absolute;right:10px;top:-12px;width:72px;height:56px;background:#111;border-radius:6px; display:flex;align-items:center;justify-content:center; box-shadow:0 0 25px rgba(246,195,107,0.6),0 8px 20px rgba(0,0,0,0.5); } .food-text{font-size:14px;color:var(--gold);font-weight:700;text-shadow:0 0 10px var(--gold);} .food-emoji{position:absolute;left:44px;top:-36px;font-size:20px;animation:pop 1.6s ease-in-out infinite;opacity:0;} .food-emoji:nth-child(1){animation-delay:0.2s} .food-emoji:nth-child(2){left:60px;top:-20px;animation-delay:0.5s} .food-emoji:nth-child(3){left:80px;top:-32px;animation-delay:0.8s} @keyframes pop{ 0%{transform:translateY(10px) scale(.6);opacity:0} 30%{opacity:1;transform:translateY(-10px) scale(1)} 100%{transform:translateY(-60px) scale(.8);opacity:0} } /* Shadow */ .shadow{position:absolute;bottom:6px;width:320px;height:22px;background:radial-gradient(closest-side,rgba(0,0,0,0.5),transparent);animation:shadowStretch 3s forwards;} @keyframes shadowStretch{0%{transform:translateX(-20vw) scaleX(.5)}100%{transform:translateX(70vw) scaleX(1.2)}} /* Drive Animation */ @keyframes drive{ 0%{left:-24%;transform:scale(.9) rotateY(-15deg)} 60%{left:40%;transform:scale(1)} 100%{left:110%;transform:scale(1.1) rotateY(20deg)} } /* Label */ .label{position:absolute;left:14px;top:14px;color:#fff;font-weight:600;font-size:16px;padding:6px 12px; background:rgba(255,255,255,0.05);backdrop-filter:blur(6px);border-radius:10px;} /* Timer */ .timer-container{ position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8); background:linear-gradient(135deg,#1e293b,#0f172a);color:#fff; padding:30px 50px;border-radius:16px;text-align:center; opacity:0;pointer-events:none;transition:all .6s ease;box-shadow:0 0 30px rgba(0,240,255,0.5); } .timer-container.show{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);} .timer-container h2{margin-bottom:10px;color:var(--gold);text-shadow:0 0 10px var(--gold);} .timer-container p{font-size:32px;font-weight:bold;color:var(--neon);text-shadow:0 0 12px var(--neon);}

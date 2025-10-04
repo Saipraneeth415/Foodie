@@ -1,0 +1,203 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lavish Food Delivery Animation</title>
+  <link rel="stylesheet" href="delivery.css">
+  <style>
+    /* ===== NAVBAR ===== */
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #a10000, #c49b3d);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      background: rgba(255, 215, 0, 0.85);
+      color: #a10000;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Hamburger */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        flex-direction: column;
+        background: #a10000;
+        width: 220px;
+        padding: 20px;
+        border-radius: 12px;
+        transition: right 0.4s ease-in-out;
+      }
+
+      .nav-links.active {
+        right: 20px;
+      }
+
+      .nav-links li {
+        margin: 12px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Offset content so navbar doesn’t overlap */
+    .stage {
+      margin-top: 100px;
+    }
+
+    /* Timer fade in */
+    .timer-container {
+      text-align: center;
+      margin-top: 40px;
+      font-family: sans-serif;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .timer-container.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🍛 Foodie</div>
+      <ul class="nav-links">
+        <li><a href="#"><a href="#"><a href = intro.html>Home</a></li>
+        <li><a href="#"><a href="cart.html">Cart</a> </a></li>
+        <li><a href="#">Delivery</a></li>
+        <li><a href="#"><a href="signup.html">Sign In</a> </a></li>
+      </ul>
+      <div class="menu-toggle">&#9776;</div>
+    </nav>
+  </header>
+
+  <!-- ===== DELIVERY ANIMATION ===== -->
+  <div class="stage" aria-hidden="true">
+    <div class="label">🍴 Your Order is on the Way 🛵</div>
+
+    <!-- Road -->
+    <div class="road">
+      <div class="horizon"></div>
+      <div class="stripe"></div>
+    </div>
+
+    <!-- Delivery -->
+    <div class="delivery">
+      <div class="scooty">
+        <div class="rider">
+          <div class="head"></div>
+          <div class="helmet"></div>
+          <div class="torso"></div>
+          <div class="scarf"></div>
+        </div>
+
+        <div class="body"></div>
+        <div class="seat"></div>
+        <div class="handle"></div>
+
+        <div class="wheel rear"><div class="hub"></div></div>
+        <div class="wheel front"><div class="hub"></div></div>
+
+        <div class="foodbox">
+          <div class="food-text">FOOD</div>
+        </div>
+
+        <!-- Food emojis -->
+        <div class="food-emoji">🍔</div>
+        <div class="food-emoji">🍟</div>
+        <div class="food-emoji">🥤</div>
+      </div>
+    </div>
+
+    <div class="shadow"></div>
+  </div>
+
+  <!-- ===== TIMER ===== -->
+  <div class="timer-container" id="timer">
+    <h2>Estimated Delivery Time ⏳</h2>
+    <p id="countdown">00:30</p>
+  </div>
+
+  <script>
+    // ===== Navbar toggle =====
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // ===== Timer logic =====
+    const delivery = document.querySelector(".delivery");
+    const timer = document.getElementById("timer");
+    const countdownEl = document.getElementById("countdown");
+
+    delivery.addEventListener("animationend", () => {
+      timer.classList.add("show");
+      startCountdown(30); // 30 seconds demo
+    });
+
+    function startCountdown(seconds) {
+      let remaining = seconds;
+      const interval = setInterval(() => {
+        let mins = String(Math.floor(remaining / 60)).padStart(2, '0');
+        let secs = String(remaining % 60).padStart(2, '0');
+        countdownEl.textContent = `${mins}:${secs}`;
+        if (remaining-- <= 0) clearInterval(interval);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
